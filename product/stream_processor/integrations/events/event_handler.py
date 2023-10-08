@@ -15,9 +15,9 @@ _or = r'|'
 _pascal_to_snake_pattern = re.compile(rf'({_exclude_underscores}{_pascal_case}{_or}{_followed_by_lower_case_or_digit}')
 
 
-class EventHandler(BaseEventHandler[AnyModel]):
+class EventHandler(BaseEventHandler):
 
-    def __init__(self, event_source: str, event_bus: str, provider: BaseEventProvider | None = None) -> None:
+    def __init__(self, event_source: str, event_bus: str, provider: BaseEventProvider | None = None):
         """Event Handler for emitting events with a given provider.
 
         Parameters
@@ -37,7 +37,6 @@ class EventHandler(BaseEventHandler[AnyModel]):
 
         Parameters
         ----------
-        payload : list[AnyModel]
         payload : list[AnyModel]
             List of product change notifications models to be sent.
         metadata : dict[str, Any] | None, optional

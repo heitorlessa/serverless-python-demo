@@ -13,7 +13,7 @@ def test_process_stream_notify_product_updates():
     process_stream(event=dynamodb_stream_events, context=generate_context(), event_handler=event_store)
 
     # THEN the fake event handler should emit these product notifications
-    # and no errors should have been raised (e.g., no sockets, no DAL calls)
+    # and no errors should have been raised (e.g., no sockets, no integration calls)
     assert len(dynamodb_stream_events['Records']) == len(event_store)
 
 

@@ -35,7 +35,7 @@ class BaseEventProvider(ABC):
 class BaseEventHandler(ABC, Generic[T]):
 
     @abstractmethod
-    def __init__(self, event_source: str, event_bus: str, provider: BaseEventProvider) -> None:
+    def __init__(self, event_source: str, event_bus: str, provider: BaseEventProvider):
         """ABC to handle event manipulation from a model, and publishing through a provider.
 
         Parameters
@@ -57,7 +57,6 @@ class BaseEventHandler(ABC, Generic[T]):
         Parameters
         ----------
         payload : list[T]
-            List of models to convert and publish as an Event.
             List of models to convert and publish as an Event.
         metadata : dict[str, Any] | None, optional
             Additional metadata to be injected into the event before sending, by default None

@@ -9,7 +9,7 @@ from product.stream_processor.integrations.events.models.output import EventRece
 
 
 def pytest_runtest_setup():
-    """Disable Unix and TCP sockets for Data masking tests"""
+    """Disable Unix and TCP sockets for stream processor tests"""
     disable_socket()
 
 
@@ -26,9 +26,9 @@ class FakeProvider(BaseEventProvider):
         return EventReceipt(success=notifications)
 
 
-class FakeEventHandler(BaseEventHandler[AnyModel]):
+class FakeEventHandler(BaseEventHandler):
 
-    def __init__(self, event_source: str = 'fake', event_bus: str = 'fake_bus', provider: BaseEventProvider | None = None) -> None:
+    def __init__(self, event_source: str = 'fake', event_bus: str = 'fake_bus', provider: BaseEventProvider | None = None):
         self.provider = provider or FakeProvider()
         self.published_payloads: list[AnyModel] = []
 

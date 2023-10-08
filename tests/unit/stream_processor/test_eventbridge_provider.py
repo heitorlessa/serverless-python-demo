@@ -120,7 +120,6 @@ def test_eventbridge_put_events_with_stubber():
 
     # THEN we should use the stubbed client to send the events
     # it should lead to no parameter validation error, runtime error on response manipulation syntax errors
-
     stubber.assert_no_pending_responses()
     stubber.deactivate()
 
